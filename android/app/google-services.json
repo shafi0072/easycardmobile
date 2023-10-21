@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "464349138574",
+    "project_id": "easycardmobile",
+    "storage_bucket": "easycardmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464349138574:android:af677fbf6dce950c8803df",
+        "android_client_info": {
+          "package_name": "com.example.easycard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464349138574-2ku1abe92t3end5bc1ojv4c4ir65mop9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-GowqfmBZlmQC2iImHNXtx-ffkQ02AaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464349138574-2ku1abe92t3end5bc1ojv4c4ir65mop9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

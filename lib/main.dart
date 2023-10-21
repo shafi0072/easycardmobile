@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +9,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      initialRoute: '/', // Set the initial route to the home page
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/login': (context) => LoginPage(), // Define a named route for the login page
+      },
     );
   }
 }
@@ -27,10 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _navigateToLogin() {
+    // Navigate to the login page when the button is pressed
+    Navigator.pushNamed(context, '/login');
+  }
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -43,56 +52,60 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.only(bottom: 30),
                   child: Image.asset('assets/images/logo.png'),
                 ),
-                SizedBox(height: 20), // Add some spacing
+                SizedBox(height: 20),
                 Center(
                   child: Column(
                     children: [
                       Text(
                         "Share your business",
-                        style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w600,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         "card easily",
-                        style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w600,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  width: 350, // Set the width of the container to full width
+                  width: 350,
                   margin: EdgeInsets.only(top: 60),
                   child: SizedBox(
-                    width: 700, // Set the width of the SizedBox to full width
+                    width: 700,
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Handle button click
-                      },
+                      onPressed: _navigateToLogin, // Navigate to login page
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF23233C)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        backgroundColor:
+                        MaterialStateProperty.all<Color>(Color(0xFF23233C)),
+                        shape:
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0), // 20px border radius
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
                         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          EdgeInsets.symmetric(vertical: 15), // 5px padding top and bottom
+                          EdgeInsets.symmetric(vertical: 15),
                         ),
                       ),
                       child: Text(
                         'Log In',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20, // Adjust the font size as needed
+                          fontSize: 20,
                           color: Colors.white,
                         ),
                       ),
                     ),
                   ),
-                )
-                ,
-
+                ),
               ],
             ),
           ),
