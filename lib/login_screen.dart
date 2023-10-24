@@ -1,6 +1,9 @@
+import 'package:easycard/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -24,19 +27,20 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: const EdgeInsets.only(bottom: 10),
                     child: const Text(
                       "Welcome",
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Color(0xFFCCCCCC),
                           blurRadius: 20,
@@ -48,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: 350,
                     height: 60,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Center(
                         child: TextField(
                           onChanged: (value) {
@@ -56,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                               email = value; // Update the email state variable
                             });
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Enter your email',
                             border: InputBorder.none,
                           ),
@@ -65,11 +69,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Color(0xFFCCCCCC),
                           blurRadius: 20,
@@ -81,16 +85,17 @@ class _LoginPageState extends State<LoginPage> {
                     width: 350,
                     height: 60,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Center(
                         child: TextField(
                           onChanged: (value) {
                             setState(() {
-                              password = value; // Update the password state variable
+                              password =
+                                  value; // Update the password state variable
                             });
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Enter your password',
                             border: InputBorder.none,
                           ),
@@ -100,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
-                    child: Text("Forget your password?"),
+                    child: const Text("Forget your password?"),
                   ),
                   Container(
                     width: 350,
@@ -109,18 +114,20 @@ class _LoginPageState extends State<LoginPage> {
                       width: 700,
                       child: ElevatedButton(
                         onPressed: () {
-                         print(email);
-                         print(password);
+                          print(email);
+                          print(password);
                         },
                         style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFF23233C)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xFF23233C)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                           ),
-                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
                             const EdgeInsets.symmetric(vertical: 15),
                           ),
                         ),
@@ -135,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  Center(
+                  const Center(
                     child: Text.rich(
                       TextSpan(
                         text: 'By continuing you agree to the ',
@@ -157,13 +164,25 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 15),
+                    margin: const EdgeInsets.only(top: 15),
                     child: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          GestureDetector(
+                            onTap: () async {
+                              // Add your Google button tap logic here
+                              // This function will be executed when the Google image is tapped.
+                              String? accessToken = await AuthService().signInWithGoogle();
+                              if (accessToken != null) {
+                                print(accessToken);
+                              } else {
+                                // Handle the case where the user canceled the Google sign-in.
+                              }
+                            },
+                            child: Image.asset('assets/images/google.png'),
+                          ),
                           Image.asset('assets/images/facebook.png'),
-                          Image.asset('assets/images/google.png'),
                         ],
                       ),
                     ),
