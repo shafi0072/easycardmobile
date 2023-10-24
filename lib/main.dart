@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,6 +26,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -49,11 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(bottom: 30),
+                  margin: const EdgeInsets.only(bottom: 30),
                   child: Image.asset('assets/images/logo.png'),
                 ),
-                SizedBox(height: 20),
-                Center(
+                const SizedBox(height: 20),
+                const Center(
                   child: Column(
                     children: [
                       Text(
@@ -77,14 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Container(
                   width: 350,
-                  margin: EdgeInsets.only(top: 60),
+                  margin: const EdgeInsets.only(top: 60),
                   child: SizedBox(
                     width: 700,
                     child: ElevatedButton(
                       onPressed: _navigateToLogin, // Navigate to login page
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFF23233C)),
+                        MaterialStateProperty.all<Color>(const Color(0xFF23233C)),
                         shape:
                         MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -92,10 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          EdgeInsets.symmetric(vertical: 15),
+                          const EdgeInsets.symmetric(vertical: 15),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Log In',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
